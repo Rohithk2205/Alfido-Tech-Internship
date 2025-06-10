@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .color-code {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .history {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .history-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .history-list {
+            list-style: none;
+            padding: 0;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .history-list li {
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Background Color</h1>
+        <button id="colorBtn">Change Color</button>
+        <div class="color-code">Current color: #FFFFFF</div>
+        <div class="history">
+            <div class="history-title">Color History:</div>
+            <ul class="history-list" id="historyList"></ul>
+        </div>
+    </div>
+
+    <script>
+        const colorBtn = document.getElementById('colorBtn');
+        const colorCode = document.querySelector('.color-code');
+        const historyList = document.getElementById('historyList');
+        let colorHistory = [];
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function updateHistory(color) {
+            colorHistory.unshift(color);
+            if (colorHistory.length > 5) colorHistory.pop();
+            historyList.innerHTML = '';
+            colorHistory.forEach(c => {
+                const li = document.createElement('li');
+                li.textContent = c;
+                li.style.color = c;
+                historyList.appendChild(li);
+            });
+        }
+
+        colorBtn.addEventListener('click', function() {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+            colorCode.textContent = `Current color: ${randomColor}`;
+            updateHistory(randomColor);
+
+            // Change text color if background is too dark
+            const rgb = parseInt(randomColor.substring(1), 16);
+            const r = (rgb >> 16) & 0xff;
+            const g = (rgb >>  8) & 0xff;
+            const b = (rgb >>  0) & 0xff;
+            const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+            if (luminance < 128) {
+                document.querySelector('.container').style.color = '#fff';
+                document.querySelector('.container').style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            } else {
+                document.querySelector('.container').style.color = '#333';
+                document.querySelector('.container').style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            }
+        });
+    </script>
+</body>
+</html>

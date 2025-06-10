@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            border-radius: 4px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .active {
+            color: #0d6efd !important;
+            font-weight: 600;
+        }
+        /* Additional styling for sections */
+        section {
+            padding: 60px 0;
+        }
+        #services, #portfolio, #about, #contact {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">DevSite</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5" id="home">
+        <h1>Welcome to our website!</h1>
+        <p>Resize the browser window to see the responsive navbar in action.</p>
+    </div>
+
+    <section id="services" class="container">
+        <h2>Our Services</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Web Development</h5>
+                <p>We build responsive and modern websites tailored to your business needs.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>UI/UX Design</h5>
+                <p>Our designers create intuitive and engaging user experiences for your products.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Consulting</h5>
+                <p>Get expert advice on technology, strategy, and digital transformation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="container">
+        <h2>Portfolio</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Project 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Project One</h5>
+                        <p class="card-text">A modern web application for e-commerce businesses.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Project 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Two</h5>
+                        <p class="card-text">A mobile-friendly portfolio site for creative professionals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Project 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Three</h5>
+                        <p class="card-text">A SaaS dashboard for business analytics and reporting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2>About Us</h2>
+        <p>
+            DevSite is a team of passionate developers and designers committed to delivering high-quality digital solutions. With years of experience in the tech industry, we help businesses grow and succeed online.
+        </p>
+        <ul>
+            <li>Experienced professionals</li>
+            <li>Customer-focused approach</li>
+            <li>Innovative solutions</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="container mb-5">
+        <h2>Contact Us</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your Name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
